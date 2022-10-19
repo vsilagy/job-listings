@@ -33,21 +33,26 @@ export default function App() {
 	return (
 		<>
 			<Header />
-			<main className="my-16 max-w-screen-xl mx-auto">
+			<main className="my-16 max-w-screen-lg mx-auto">
 				{filters.length > 0 && (
-					<div className="flex justify-between items-center bg-white mx-4 -mt-28 mb-12 p-8 gap-6 rounded shadow-lg">
-						<div>
+					<div className="flex justify-between items-center bg-white mx-4 -mt-24 p-4 gap-4 mb-8 rounded shadow-lg">
+						<div className="flex flex-wrap gap-4">
 							{filters.map((filter) => (
-								<span
-									onClick={() => handleFilterClick(filter)}
-									className="text-darkCyan bg-lightGrayishCyanFilter font-bold text-center  px-2 py-2 mx-2 rounded-md">
-									{filter}
+								<span className=" bg-lightGrayishCyanFilter flex justify-center items-center font-bold text-center rounded-md">
+									<span className="text-darkCyan py-1 px-2">
+										{filter}
+									</span>
+									<img
+										onClick={() => handleFilterClick(filter)}
+										className="bg-darkCyan hover:bg-black p-2 rounded-r-md cursor-pointer"
+										src="/images/icon-remove.svg"
+									/>
 								</span>
 							))}
 						</div>
 						<button
-							onClick={() => setFilters('')}
-							className=" text-darkGrayishCyan font-bold text-center  px-2 py-1 rounded-md hover:text-darkCyan hover:underline cursor-pointer">
+							onClick={() => setFilters([])}
+							className=" text-darkGrayishCyan font-bold text-center  rounded-md hover:text-darkCyan hover:underline cursor-pointer">
 							Clear
 						</button>
 					</div>
