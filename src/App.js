@@ -1,15 +1,13 @@
 import { useState, useEffect } from 'react';
-import JobBoard from './components/JobBoard';
+import JobListing from './components/JobListing.js';
 import data from './assets/data.json';
 import Header from './components/Header';
 
 export default function App() {
-	const [jobs, setJobs] = useState([]);
+	const [jobs, setJobs] = useState(data);
 	const [filters, setFilters] = useState([]);
 
-	useEffect(() => setJobs(data), []);
-
-	const jobsFiltering = (jobs) => {
+	const tagFilter = (jobs) => {
 		const { role, level, languages, tools } = jobs;
 		const tags = [role, level, ...languages, ...tools];
 
@@ -18,7 +16,6 @@ export default function App() {
 		}
 		return tags.some((tag) => filters.includes(tag));
 	};
-
 	const handleTagClick = (tag) => {
 		if (filters.includes(tag)) return;
 		setFilters([...filters, tag]);
@@ -28,8 +25,10 @@ export default function App() {
 		setFilters(filters.filter((filter) => filter !== clickedFilter));
 	};
 
-	const filteredJobs = jobs.filter(jobsFiltering);
-
+	const handleClearFilters = () => {
+		setFilters([]);
+	};
+	const jobsFiltered = jobs.filter(tagFilter);
 	return (
 		<>
 			<Header />
@@ -45,21 +44,23 @@ export default function App() {
 									<img
 										onClick={() => handleFilterClick(filter)}
 										className="bg-darkCyan hover:bg-black p-2 rounded-r-md cursor-pointer"
-										src="/images/icon-remove.svg"
+										src={
+											process.env.PUBLIC_URL +
+											'/images/icon-remove.svg'
+										}
 									/>
 								</span>
 							))}
 						</div>
 						<button
-							onClick={() => setFilters([])}
+							onClick={handleClearFilters}
 							className=" text-darkGrayishCyan font-bold text-center  rounded-md hover:text-darkCyan hover:underline cursor-pointer">
 							Clear
 						</button>
 					</div>
 				)}
-
-				{filteredJobs.map((job) => (
-					<JobBoard
+				{jobsFiltered.map((job) => (
+					<JobListing
 						job={job}
 						key={job.id}
 						handleTagClick={handleTagClick}
