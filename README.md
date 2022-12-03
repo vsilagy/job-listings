@@ -1,7 +1,7 @@
-# Github dev search
+# Job listings with filters
 
 A GitHub dev search app
-[Live Preview](https://gh-dev-search.netlify.app/)
+[Live Preview](https://vsilagy.github.io/job-listings)
 
 ## Built with:
 
