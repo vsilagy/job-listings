@@ -33,6 +33,7 @@ export default function App() {
 	const handleClearFilters = () => {
 		setFilters([]);
 	};
+
 	const filteredJob = jobs.filter((job) => filterTags(job));
 
 	return (

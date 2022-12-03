@@ -4,7 +4,7 @@ export default function JobFilters({
 	handleClearFilters,
 }) {
 	return (
-		<div className="flex justify-between items-center bg-white mx-4 -mt-24 p-4 gap-4 mb-8 rounded shadow-lg">
+		<div className="flex justify-between items-center mx-4 -mt-24 p-4 gap-4 mb-8 bg-white rounded shadow-lg">
 			<div className="flex flex-wrap gap-4">
 				{filters.map((filter) => (
 					<span className=" bg-lightGrayishCyanFilter flex justify-center items-center font-bold text-center rounded-md">
