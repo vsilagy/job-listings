@@ -4,7 +4,7 @@ A job board app generated from a json with filters based on tags
 
 [Live Preview](https://vsilagy.github.io/job-listings)
 
-![screenshot]('/public/screenshot.png')
+![screenshot](https://raw.githubusercontent.com/vsilagy/job-listings/main/public/screenshot.png)
 
 ## Built with:
 
