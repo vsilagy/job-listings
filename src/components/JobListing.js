@@ -1,4 +1,4 @@
-export default function JobListing({ job, handleTagClick }) {
+export default function JobListing({ job, handleTagSearch }) {
 	let tags = [job.role, job.level, ...job.languages, ...job.tools];
 
 	return (
@@ -41,7 +41,7 @@ export default function JobListing({ job, handleTagClick }) {
 						? tags.map((tag, index) => (
 								<span
 									key={index}
-									onClick={() => handleTagClick(tag)}
+									onClick={() => handleTagSearch(tag)}
 									className="text-darkCyan bg-lightGrayishCyanFilter font-bold text-center  py-1 px-2 rounded-md hover:text-lightGrayishCyanBg hover:bg-darkCyan cursor-pointer">
 									{tag}
 								</span>
